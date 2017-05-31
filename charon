@@ -1,0 +1,43 @@
+#!/usr/bin/php
+<?php
+// error_reporting(0);
+$root = realpath('.');
+echo PHP_EOL.'----------------------------------------------------------------------'.PHP_EOL.PHP_EOL;
+function cout($string, $eol = true)
+{
+  echo '| '.$string;
+  if ($eol)
+  {
+    echo PHP_EOL;
+  }
+}
+function cin($string)
+{
+  cout($string);
+  cout('>> ', false);
+  return trim(fgets(STDIN));
+}
+function rrmdir($dir)
+{
+  if (is_dir($dir))
+  {
+    $objects = scandir($dir);
+    foreach ($objects as $object)
+    {
+      if ($object != "." && $object != "..")
+      {
+        if (filetype($dir."/".$object) == "dir")
+        {
+          rrmdir($dir."/".$object);
+        }
+        else
+        {
+          unlink($dir."/".$object);
+        }
+      }
+    }
+    reset($objects);
+    rmdir($dir);
+  }
+}
+echo PHP_EOL.'----------------------------------------------------------------------'.PHP_EOL;
