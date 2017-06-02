@@ -10,4 +10,11 @@ define('MODEL_DIR', APP_DIR.'model'.DS);
 define('VIEW_DIR', APP_DIR.'view'.DS);
 define('CONTROLLER_DIR', APP_DIR.'controller'.DS);
 
+
 $app = new Charon();
+
+$app->get('/user/[action:i]', function(){
+  echo 'sex';
+});
+
+$app->run();
