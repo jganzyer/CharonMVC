@@ -4,7 +4,7 @@ class Config
   private static $config = [];
   public static function load($file)
   {
-    $loc = CONFIG_DIR.$file;
+    $loc = '.\app\config\\'.$file;
     if (file_exists($loc)) {
       switch(pathinfo($loc, PATHINFO_EXTENSION))
       {

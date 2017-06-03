@@ -13,7 +13,6 @@ define('VIEW_DIR', APP_DIR.'view'.DS);
 define('CONTROLLER_DIR', APP_DIR.'controller'.DS);
 define('CONFIG_DIR', APP_DIR.'config'.DS);
 
-Config::load('main.json');
 $app = new Charon();
 Route::init($app);
 require_once(APP_DIR.'init.php');

@@ -9,7 +9,7 @@ class Service
     return json_encode($array, $flag);
   }
 
-  public static function json_decode(array $json, $array = true)
+  public static function json_decode($json, $array = true)
   {
     return json_decode($json, $array);
   }
@@ -24,7 +24,7 @@ class Service
     return str_getcsv($csv, $delimeter);
   }
 
-  public static function sflash($key, $value = null)
+  public static function sflash($key, $value)
   {
     self::$flashs[$key] = $value;
   }
