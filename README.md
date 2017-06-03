@@ -1,4 +1,4 @@
-<p align="center"><a href="https://charonMVC.com" target="_blank">
+<p align="center"><a href="https://charonMVC.com" target="_blank_">
   <img src="https://i.hizliresim.com/zBvV5j.png" width="310px" />
 </a></p>
 
@@ -12,6 +12,28 @@
 ## Documentation
 
 * SOON
+
+## Routing
+
+Fast, simple and flex.
+
+```php
+$pattern = '/page/[variable:(regex)]';
+
+$pattern = '/page/[testing:(\d+)]';
+// matches: /page/(0, 1, 2 ,3...)
+
+Route::get($pattern, $callback);
+Route::post($pattern, $callback);
+Route::put($pattern, $callback);
+Route::delete($pattern, $callback);
+Route::any($pattern, $callback);
+Route::map($methods, $pattern, $callback);
+$methods = 'GET,POST,PUT';
+$callback = function() {  };
+$callback = 'Home.index';
+
+```
 
 ## HTTP API
 
@@ -53,7 +75,7 @@ $this->service->
 
 ## Charon Wallpapers
 
-<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
+<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
 </a></p>
 
 <!-- ## 0.0.0 -->

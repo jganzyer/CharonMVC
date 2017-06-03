@@ -2,12 +2,10 @@
 class Route
 {
   private static $app;
-  private static $uri;
   private static $base = '';
   public static function init($instance)
   {
     self::$app = $instance;
-    self::$uri = self::$app->uri;
   }
   public static function call($var, $params = [], $delimeter = '.')
   {
@@ -38,9 +36,17 @@ class Route
     self::$app->map($methods, self::$base.$pattern, $callback);
     return new static;
   }
+  public static function name($name)
+  {
+    self::$app->name($name);
+  }
+  public static function redirect($name)
+  {
+    self::$app->redirect($name);
+  }
   public static function uri()
   {
-    return self::$uri;
+    return self::$app->uri;
   }
   public static function set404($callback)
   {

@@ -10,6 +10,7 @@ class Charon
   private $route_main;
   private $route_current;
   private $route_nf;
+  public $route_name;
 
   public function __construct()
   {
@@ -75,6 +76,42 @@ class Charon
     }
     $this->route_current = $name;
     return $this;
+  }
+
+  public function name($name)
+  {
+    $this->route_name[strtolower($name)] = $this->route_current;
+  }
+
+  public function redirect($name, $params = [], $timeout = 0, $statusCode = 302)
+  {
+    $pattern = $this->route_name[strtolower($name)];
+    preg_match_all("/\[([^\]]*)\]/", $pattern, $pattern_brackets);
+    foreach($pattern_brackets[1] as $bracket)
+    {
+      $brackete = explode(':', $bracket,2);
+      if (isset($brackete[1])) {
+        if ($brackete[1] === "i") {
+          $brackete[1] = "(\d+)";
+        }
+      } else {
+        $brackete[1] = "(\w+)";
+      }
+      if (isset($params[$brackete[0]])) {
+        if (preg_match('#^'.$brackete[1].'$#', $params[$brackete[0]])) {
+          $pattern = str_replace('['.$bracket.']', $params[$brackete[0]], $pattern);
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+    //succes
+    $is = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443;
+    $link = 'http'.(($is === true) ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
+    $link .= $pattern;
+    Response::redirect($link, $timeout, $statusCode);
   }
 
   public function middleware($callback)
