@@ -3,8 +3,8 @@ class Charon
 {
   const VERSION = '1.0.0';
 
-  private $base;
-  private $uri;
+  public $base;
+  public $uri;
 
   private $route_base;
   private $route_main;
