@@ -107,8 +107,6 @@ $this->service->
 <p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
 </a></p>
 
-<img src="http://gstarcad.eu/wp-content/uploads/2014/12/License-manager-icon.png" align="right" />
-
 ## License
 
 The CharonMVC framework is licensed under the terms of the MIT license.
