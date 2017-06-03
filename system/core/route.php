@@ -21,6 +21,18 @@ class Route
   {
     return self::map('post', $pattern, $callback);
   }
+  public static function put($pattern, $callback)
+  {
+    return self::map('put', $pattern, $callback);
+  }
+  public static function delete($pattern, $callback)
+  {
+    return self::map('delete', $pattern, $callback);
+  }
+  public static function any($pattern, $callback)
+  {
+    return self::map('any', $pattern, $callback);
+  }
   public static function map($methods, $pattern, $callback)
   {
     self::$app->map($methods, self::$base.$pattern, $callback);
