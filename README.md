@@ -47,6 +47,11 @@ Route::map($methods, $pattern, $callback);
 Route::get($pattern,$callback)->name($name);
 
 Route::redirect($name, $params = [], $timeout = 0, $statusCode = 302);
+
+Route::group($base, function(){
+  Route::get($pattern, $callback);
+  //...
+});
 ```
 
 ## HTTP API
