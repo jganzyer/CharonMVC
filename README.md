@@ -13,11 +13,6 @@
 
 * SOON
 
-## Charon Wallpapers
-
-<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
-</a></p>
-
 ## HTTP API
 
 [CharonMVC][1]'s easy request, response and service library
@@ -55,6 +50,11 @@ $this->service->
         session_start()
         gflash($key, $next = false)
 ```
+
+## Charon Wallpapers
+
+<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
+</a></p>
 
 <!-- ## 0.0.0 -->
   <!-- - ... -->
