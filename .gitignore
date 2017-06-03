@@ -1,1 +1,1 @@
-git rm --cached .htacces
+*.htacces
