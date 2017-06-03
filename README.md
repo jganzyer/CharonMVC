@@ -15,7 +15,7 @@
 
 ## Charon Wallpapers
 
-<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="620px" />
+<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
 </a></p>
 
 <!-- # Changelog -->
