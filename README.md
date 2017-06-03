@@ -8,9 +8,19 @@
 </p>
 
 [CharonMVC][1] is a super simple and powerfull **PHP framework** for web applications.
-> Start using CharonMVC now.
+
+## Documentation
+
+- [Installation](#installation)
+- [TODO'S](#todos)
+- [Routing](#routing)
+- [HTTP API](#http-api)
+- [Charon Wallpapers](#http-api)
+- [License](#license)
 
 ## Installation
+
+> Start using CharonMVC now.
 
 * [Download][2] CharonMVC and extract. Simple huh?
 
