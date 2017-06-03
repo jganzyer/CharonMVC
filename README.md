@@ -30,7 +30,7 @@
 
 ## Routing
 
-Routing in CharonMVC is very easy. You can use routing static `Route::` or dynamic `$app->`.
+Routing in CharonMVC is very easy. You can use routing static ` Route:: ` or dynamic ` $app-> `
 
 ```php
 $pattern = '/page/[variable1:(regex)]';
