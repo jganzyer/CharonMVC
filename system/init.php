@@ -13,8 +13,9 @@ define('CONTROLLER_DIR', APP_DIR.'controller'.DS);
 
 $app = new Charon();
 
-$app->get('/user/[action:i]', function(){
-  echo 'sex';
+$app->get('/', 'Home.index');
+$app->any('/test', function(){
+  var_dump($_POST);
 });
 
 $app->run();

@@ -1,6 +1,8 @@
 <?php
 class Charon
 {
+  const VERSION = '1.0.0';
+
   private $base;
   private $uri;
 

@@ -1,8 +1,8 @@
 <?php
-namespace Xd;
-class Home
+class Home extends Controller
 {
-  public function index(){
-    echo 'homepage';
+  public function index()
+  {
+    // $this->response->back();
   }
 }
