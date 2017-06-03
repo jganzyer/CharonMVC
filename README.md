@@ -108,6 +108,7 @@ $this->service->
 </a></p>
 
 <img src="http://gstarcad.eu/wp-content/uploads/2014/12/License-manager-icon.png" align="right" />
+
 ## License
 
 The CharonMVC framework is licensed under the terms of the MIT license.
