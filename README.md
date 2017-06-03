@@ -8,7 +8,7 @@
 </p>
 
 [CharonMVC][1] is a super simple and powerfull **PHP framework** for web applications.
-
+> Start using CharonMVC now.
 
 ## Installation
 
@@ -48,7 +48,7 @@ Route::get($pattern,$callback)->name($name);
 
 Route::redirect($name, $params = [], $timeout = 0, $statusCode = 302);
 
-Route::group($base, function(){
+Route::group($base, function() {
   Route::get($pattern, $callback);
   //...
 });
