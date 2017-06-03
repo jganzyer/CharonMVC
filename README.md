@@ -3,6 +3,8 @@
 <br/>
 <img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" />
 <img src="https://img.shields.io/badge/issues-0-brightgreen.svg?style=flat-square" />
+<img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" />
+<img src="https://img.shields.io/badge/rating-%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85-brightgreen.svg?style=flat-square" />
 </p>
 
 [CharonMVC][1] is a super simple and powerfull **PHP framework** for web applications.
