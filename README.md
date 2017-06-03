@@ -9,9 +9,9 @@
 
 * [Download][2] CharonMVC and extract. Simple huh?
 
-## Documentation
+## TODO'S
 
-* SOON
+* add validator
 
 ## Routing
 
