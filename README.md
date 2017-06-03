@@ -18,10 +18,19 @@
 Fast, simple and flex.
 
 ```php
-$pattern = '/page/[variable:(regex)]';
+$pattern = '/page/[variable1:(regex)]';
 
-$pattern = '/page/[testing:(\d+)]';
+$pattern = '/page/[variable2:(\d+)]';
 // matches: /page/(0, 1, 2 ,3...)
+$pattern = '/action/[variable3:(edit|delete|create)]';
+//matches: /action/edit or /action/delete or /action/create
+
+$methods = 'GET,POST,PUT';
+
+$callback = function() {  };
+$callback = 'Home.index';
+
+$params = [ $variable1 => $data1, $variable2 => $data2 ];
 
 Route::get($pattern, $callback);
 Route::post($pattern, $callback);
@@ -29,10 +38,10 @@ Route::put($pattern, $callback);
 Route::delete($pattern, $callback);
 Route::any($pattern, $callback);
 Route::map($methods, $pattern, $callback);
-$methods = 'GET,POST,PUT';
-$callback = function() {  };
-$callback = 'Home.index';
 
+Route::get($pattern,$callback)->name($name);
+
+Route::redirect($name, $params = [], $timeout = 0, $statusCode = 302);
 ```
 
 ## HTTP API

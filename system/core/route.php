@@ -40,9 +40,9 @@ class Route
   {
     self::$app->name($name);
   }
-  public static function redirect($name)
+  public static function redirect($name, $params = [], $timeout =0, $statusCode = 302)
   {
-    self::$app->redirect($name);
+    self::$app->redirect($name, $params, $timeout, $statusCode);
   }
   public static function uri()
   {
