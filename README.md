@@ -107,8 +107,9 @@ $this->service->
 <p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
 </a></p>
 
-<!-- ## 0.0.0 -->
-  <!-- - ... -->
+## License
+
+The CharonMVC framework is licensed under the terms of the MIT license.
 
 [1]: https://www.charonMVC.com/
 [2]: https://github.com/CharonFW/CharonMVC/archive/master.zip
