@@ -1,6 +1,9 @@
-<p align="center"><a href="https://charonMVC.com" target="_blank_">
-  <img src="https://i.hizliresim.com/zBvV5j.png" width="310px" />
-</a><br/><img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" /></p>
+<p align="center">
+<a href="https://charonMVC.com" target="_blank_"><img src="https://i.hizliresim.com/zBvV5j.png" width="310px" /></a>
+<br/>
+<img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" />
+<img src="https://img.shields.io/badge/issues-0-brightgreen.svg?style=flat-square" />
+</p>
 
 [CharonMVC][1] is a super simple and powerfull **PHP framework** for web applications.
 
