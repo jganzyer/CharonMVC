@@ -15,7 +15,7 @@
 - [TODO'S](#todos)
 - [Routing](#routing)
 - [HTTP API](#http-api)
-- [Charon Wallpapers](#http-api)
+- [Charon Wallpapers](#charon-wallpapers)
 - [License](#license)
 
 ## Installation
