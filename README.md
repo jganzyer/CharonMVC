@@ -15,6 +15,7 @@
 - [TODO'S](#todos)
 - [Routing](#routing)
 - [HTTP API](#http-api)
+- [IP API](#ip-api)
 - [Benchmark](#benchmark)
 - [Charon Wallpapers](#charon-wallpapers)
 - [License](#license)
@@ -104,6 +105,22 @@ $this->service->
         gflash($key, $next = false)
 ```
 
+## IP API
+
+```php
+use Charon\IP;
+
+string | IP::random();
+
+string | IP::get();
+
+boolean | IP::check($ip);
+
+boolean | IP::check_white_list(array $ips, $ip = null);
+
+boolean | IP::check_black_list(array $ips, $ip = null);
+```
+
 ## Benchmark
 
 ```php
@@ -112,13 +129,13 @@ use Charon\Benchmark;
 Benchmark::step($name);
 Benchmark::step($name);
 
-float Benchmark::report($start, $end);
+double | Benchmark::report($start, $end);
 
-float Benchmark::time();
+double | Benchmark::time();
 
-float Benchmark::run($fn, array $params = []);
+double | Benchmark::run($fn, array $params = []);
 
-float Benchmark::first($fn, array $params = [])
+double | Benchmark::first($fn, array $params = [])
                ->second($fn, array $params = []);
 ```
 

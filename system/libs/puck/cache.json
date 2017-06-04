@@ -8,6 +8,8 @@
     "Response": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\response.php",
     "Service": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\service.php",
     "Charon\\Benchmark": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\benchmark.php",
+    "Charon\\IP": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\ip.php",
     "Capella": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\capella\\capella.php",
-    "Puck": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\puck\\puck.php"
+    "Puck": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\puck\\puck.php",
+    "Charon\\Validator": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\validator\\validator.php"
 }
