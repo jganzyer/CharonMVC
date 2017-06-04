@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://charonMVC.com" target="_blank"><img src="https://i.hizliresim.com/zBvV5j.png" width="310px" /></a>
+<a href="https://charonMVC.com" target="_blank_"><img src="https://i.hizliresim.com/zBvV5j.png" width="310px" /></a>
 <br/>
 <img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" />
 <img src="https://img.shields.io/badge/issues-0-brightgreen.svg?style=flat-square" />
@@ -15,6 +15,7 @@
 - [TODO'S](#todos)
 - [Routing](#routing)
 - [HTTP API](#http-api)
+- [Benchmark](#benchmark)
 - [Charon Wallpapers](#http-api)
 - [License](#license)
 
@@ -27,6 +28,7 @@
 ## TODO'S
 
 * add validator
+* add error handler
 
 ## Routing
 
@@ -102,9 +104,26 @@ $this->service->
         gflash($key, $next = false)
 ```
 
+## Benchmark
+
+```php
+use Charon\Benchmark;
+Benchmark::step($name);
+Benchmark::step($name);
+
+float Benchmark::report($start, $end);
+
+float Benchmark::time();
+
+float Benchmark::run($fn, array $params = []);
+
+float Benchmark::first($fn, array $params = [])
+               ->second($fn, array $params = []);
+```
+
 ## Charon Wallpapers
 
-<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
+<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
 </a></p>
 
 ## License
