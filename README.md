@@ -121,8 +121,6 @@ boolean | IP::check_white_list(array $ips, $ip = null);
 boolean | IP::check_black_list(array $ips, $ip = null);
 ```
 
-/play secret
-
 ## Benchmark
 
 ```php
@@ -137,7 +135,7 @@ double | Benchmark::time();
 
 double | Benchmark::run($fn, array $params = []);
 
-double | Benchmark::first($fn, array $params = [])
+string | Benchmark::first($fn, array $params = [])
                   ->second($fn, array $params = []);
 ```
 
