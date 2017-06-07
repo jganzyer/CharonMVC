@@ -1,25 +1,41 @@
-html {
-   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-*,::before,::after{box-sizing:border-box;outline:none;list-style: none;list-style-type: none;}
-img{margin:0;padding:0;border:none;outline:none!important;}
-a,p,ul,li,h1,h2,h3,h4,h5,h6,button,input,i,strong,img,span{margin:0;padding:0;}
-a{text-decoration:none;}
-input,button{display:block;border:none;outline:none;}
-i{speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;text-rendering:optimizeLegibility;font-feature-settings:"liga" 1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-::-webkit-scrollbar{display:none}
-.antisec,br{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .imspy{
   display:none;
 }
-html, body{
-  background-color: #21252b;
+.cdump *{
   margin:0;
   padding:0;
-  font-family: 'Roboto','Raleway', monospace;
-  word-wrap: break-word;
-  direction: ltr;
-  overflow-x: hidden;
-  height: 100%;
-  overflow-y: scroll;
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 26px;
+  color:#1d1e1e;
+}
+.cdump
+{
+  width: 100%;
+  min-height: 28px;
+  height: auto;
+  background-color: #b6cedb;
+  border:1px solid #87afc4;
+  box-sizing:border-box;
+  margin-bottom:10px;
+}
+.cdump-type
+{
+  float:left;
+  height: 26px;
+  color:#0092db;
+  padding:0 10px;
+}
+.cdump-value{
+  padding:0 4px;
+}
+.cdump-icon
+{
+  float:left;
+  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 150"><g stroke-width="2" fill="%23FFF"><path d="M1 1h28v28H1zm5 14h18m-9 9V6M1 61h28v28H1zm5 14h18" stroke="%23379"/><path d="M1 31h28v28H1zm5 14h18m-9 9V36M1 91h28v28H1zm5 14h18" stroke="%235A3"/><path d="M1 121h28v28H1zm5 5l18 18m-18 0l18-18" stroke="%23CCC"/></g></svg>') no-repeat scroll 0 0/100% auto transparent;
+  width: 15px;
+  height: 15px;
+  margin:6px 0px 6px 6px;
+  cursor:pointer;
 }
