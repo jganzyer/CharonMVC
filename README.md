@@ -31,6 +31,11 @@
 
 * add validator
 * add error handler
+* add cache class
+* add NO-CSRF
+* add anti xss
+* add license generator
+* add languagement
 
 ## Routing
 

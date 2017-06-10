@@ -23,6 +23,10 @@ class Benchmark
   {
     return microtime(true);
   }
+  public static function memory_usage()
+  {
+    return memory_get_usage();
+  }
   public static function run($fn, array $params = [])
   {
     $s = microtime(true);
@@ -30,10 +34,6 @@ class Benchmark
     $e = microtime(true);
     return $e - $s;
   }
-  // public static function compress()
-  // {
-  //   return new static;
-  // }
   public static function first($fn, array $params = [])
   {
     self::$cs['f'] = self::run($fn, $params);

@@ -29,13 +29,18 @@ class Puck
   }
   public static function __autoload($cn)
   {
+    $p = false;
     if (isset(self::$cf[$cn])) {
       require_once(self::$cf[$cn]);
+      $p = true;
     }
     foreach((array)self::$loads as $load)
     {
-      call_user_func($load, $cn);
+      if (call_user_func($load, $cn) === true) {
+        $p = true;
+      }
     }
+    return $p;
   }
   private static function rglob($pattern, $flags = 0)
   {

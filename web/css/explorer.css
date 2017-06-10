@@ -1,7 +1,7 @@
 .imspy{
   display:none;
 }
-.cdump *{
+/*.cdump *{
   margin:0;
   padding:0;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
@@ -12,6 +12,7 @@
 }
 .cdump
 {
+  position: relative;
   width: 100%;
   min-height: 28px;
   height: auto;
@@ -39,3 +40,33 @@
   margin:6px 0px 6px 6px;
   cursor:pointer;
 }
+.cdump-subov
+{
+  clear:left;
+  position: relative;
+  width: auto;
+  margin:0 0 0 22px;
+  height: auto;
+}
+.cdump-sub
+{
+  width: 100%;
+  background-color: #ccdde6;
+  height: auto;
+  min-height:26px;
+  margin:0;
+  border:none;
+  border-bottom:1px solid #bbd1dd;
+  clear:left;
+}
+.cdump-key
+{
+  float:left;
+  padding:0 0 0 10px;
+}
+.cdump-array .cdump-icon
+{
+  margin-left:10px;
+}
+.cdump-array{
+}*/

@@ -1,6 +1,12 @@
 <?php
+require_once('system\init.php');
 require_once('system\libs\puck\puck.php');
 require_once('system\core\config.php');
 Config::load('main.json');
 Puck::init(Config::get("puck")['mode']);
-require_once('system\init.php');
+
+$app = new Charon();
+Route::init($app);
+require_once(HELPERS_DIR.'system.php');
+require_once(APP_DIR.'init.php');
+$app->run();

@@ -6,9 +6,15 @@ class Response
     return ($code === null) ? http_response_code() : http_response_code($code);
   }
 
-  public static function header($key, $value)
+  public static function header($key, $value = null)
   {
-    header($key.': '.$value);
+    if ($value === null) {
+      header($key);
+    }
+    else
+    {
+      header($key.': '.$value);
+    }
   }
 
   public static function redirect($url, $timeout = 0, $statusCode = 302)

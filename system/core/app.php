@@ -18,16 +18,16 @@ class Charon
     $this->uri = $this->uri();
   }
 
-  public static function call($var, $params = [], $delimeter = '.')
+  public static function call($var, $params = [], $this = null, $delimeter = '.')
   {
     $type = gettype($var);
     if ($type === 'object') {
-      return call_user_func_array($var, $params);
+      return call_user_func_array(Closure::bind($var, $this), $params);
     }
     else if ($type === 'string')
     {
       $e = explode($delimeter, $var);
-      return call_user_func_array([new $e[0](), $e[1]], $params);
+      return call_user_func_array([new $e[0](),$e[1]], $params);
     }
   }
 
@@ -107,7 +107,6 @@ class Charon
         return false;
       }
     }
-    //succes
     $is = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443;
     $link = 'http'.(($is === true) ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
     $link .= $pattern;
@@ -135,11 +134,9 @@ class Charon
   public function run()
   {
     $nf = true;
-    $params_key = [];
-    $req = new stdClass();
-    $rep;
     foreach((array)$this->route_main as $pattern => $route)
     {
+      $params_key = [];
       preg_match_all("/\[([^\]]*)\]/", $pattern, $pattern_brackets);
       foreach ($pattern_brackets[1] as $pbs)
       {
@@ -162,7 +159,7 @@ class Charon
       {
         array_shift($params_value);
         $params = array_combine($params_key, $params_value);
-        // $req::config($params, Charon\Libs\IP::get());
+        Request::__init($params);
         if (!empty($route['mws']))
         {
           foreach ($route['mws'] as $mw)
@@ -176,18 +173,17 @@ class Charon
         if (isset($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])]))
         {
           $nf = false;
-          $this->call($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])], [$this]);
+          $this->call($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])], [$this], new Controller());
         }
         else if (isset($route['cb']['any']))
         {
           $nf = false;
-          $this->call($route['cb']['any'], [$this]);
+          $this->call($route['cb']['any'], [$this], new Controller());
         }
       }
     }
     if ($nf === true)
     {
-      // $req::config([], Charon\Libs\IP::get());
       if (!empty($this->route_nf['404']))
       {
         $this->call($this->route_nf['404']);

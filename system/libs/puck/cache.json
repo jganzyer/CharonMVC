@@ -3,13 +3,17 @@
     "Charon": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\app.php",
     "Config": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\config.php",
     "Controller": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\controller.php",
+    "Load": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\load.php",
     "Route": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\route.php",
     "Request": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\request.php",
     "Response": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\response.php",
     "Service": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\service.php",
+    "cig": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\helpers\\test.php",
     "Charon\\Benchmark": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\benchmark.php",
+    "Charon\\Dump": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\dump.php",
     "Charon\\IP": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\ip.php",
     "Capella": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\capella\\capella.php",
+    "Charon\\Email": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\email\\email.php",
     "Puck": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\puck\\puck.php",
     "Charon\\Validator": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\validator\\validator.php"
 }

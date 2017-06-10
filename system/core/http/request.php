@@ -7,7 +7,7 @@ class Request
   private static $post;
   private static $files;
 
-  private static $vars;
+  private static $vars = [];
 
   public function __construct($ip, $server, $headers, $post, $files)
   {
