@@ -15,13 +15,16 @@ class Charon
   public function __construct()
   {
     $this->base = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1));
-    $this->uri = $this->uri();
+    $uri = substr($_SERVER['REQUEST_URI'], strlen($this->base));
+    $uri = '/'.trim((strstr($uri, '?')) ? substr($uri, 0, strpos($uri, '?')) : $uri, '/');
+    $this->uri = $uri;
   }
 
   public static function call($var, $params = [], $this = null, $delimeter = '.')
   {
     $type = gettype($var);
-    if ($type === 'object') {
+    if ($type === 'object')
+    {
       return call_user_func_array(Closure::bind($var, $this), $params);
     }
     else if ($type === 'string')
@@ -29,16 +32,6 @@ class Charon
       $e = explode($delimeter, $var);
       return call_user_func_array([new $e[0](),$e[1]], $params);
     }
-  }
-
-  public function uri()
-  {
-    $uri = substr($_SERVER['REQUEST_URI'], strlen($this->base));
-    if (strstr($uri, '?'))
-    {
-      $uri = substr($uri, 0, strpos($uri, '?'));
-    }
-    return '/'.trim($uri, '/');
   }
 
   public function get($pattern,$callback)

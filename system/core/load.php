@@ -25,10 +25,11 @@ class Load
   }
   public static function library($class, $params = null, $name = null)
   {
-    if (class_exists($class))
+    $e = explode('.', $class);
+    $r = implode(DS,$e);
+    if (Puck::exists($r, false, DS, $ro))
     {
-      Controller::$_libs[($name === null) ? $class : $name] = new $class(...$params);
-      var_dump(Controller::$_libs);
+      Controller::$_libs[strtolower(($name === null) ? end($e) : $name)] = new $ro(...$params);
       return true;
     }
     else

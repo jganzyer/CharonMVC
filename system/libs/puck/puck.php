@@ -2,7 +2,7 @@
 class Puck
 {
   private static $cf = [];
-  private static $loads = [];
+  private static $load;
   public static function init($mode)
   {
     if ($mode !== 1 && file_exists(__DIR__.'\cache.json'))
@@ -25,7 +25,7 @@ class Puck
   }
   public static function autoload(Callable $fn)
   {
-    array_push(self::$loads, $fn);
+    self::$load = $fn;
   }
   public static function __autoload($cn)
   {
@@ -34,13 +34,35 @@ class Puck
       require_once(self::$cf[$cn]);
       $p = true;
     }
-    foreach((array)self::$loads as $load)
-    {
-      if (call_user_func($load, $cn) === true) {
+    if (isset(self::$load)) {
+      if (call_user_func(self::$load, $cn) === true) {
         $p = true;
       }
     }
     return $p;
+  }
+  public static function exists($name, $casesensetive = false, $delimeter = DIRECTORY_SEPARATOR, &$realname = null)
+  {
+    $name = str_replace($delimeter, DIRECTORY_SEPARATOR, $name);
+    if ($casesensetive == true)
+    {
+      if (array_key_exists($name, self::$cf) === true)
+      {
+        $realname = $name;
+        return true;
+      } else {
+        return false;
+      }
+    }
+    foreach(self::$cf as $vkey => $n)
+    {
+      if (strtolower($name) === strtolower($vkey))
+      {
+        $realname = $vkey;
+        return true;
+      }
+    }
+    return false;
   }
   private static function rglob($pattern, $flags = 0)
   {

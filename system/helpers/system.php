@@ -6,3 +6,11 @@ function d($var = null)
   }
   return \Charon\Dump::dump($var) ;
 }
+function generate_token()
+{
+  return md5(uniqid(mt_rand(), true));
+}
+function xss_clean($input)
+{
+  return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+}
