@@ -22,14 +22,13 @@ class Dump
   private static function type2function($var)
   {
     $type = gettype($var);
-    $var = ($type === 'array') ? $var : xss_clean($var);
     if ($type === 'array')
     {
       self::array2html($var);
     }
     else if ($type === 'string')
     {
-      self::string2html($var);
+      self::string2html(xss_clean($var));
     }
     else if ($type === 'object')
     {

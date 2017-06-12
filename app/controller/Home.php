@@ -5,5 +5,6 @@ class Home extends Controller
 {
   public function index($app)
   {
+    d(true);
   }
 }

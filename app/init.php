@@ -1,2 +1,2 @@
 <?php
-Route::get('/', 'Home.index');
+Route::any('/', 'Home.index');

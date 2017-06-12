@@ -107,8 +107,3 @@ function slug($text)
   $text = strtolower($text);
   return $text;
 }
-function captcha($numchars = 4, $height = 130, $difficulty = SVGCaptcha::EASY)
-{
-  $obj = SVGCaptcha::getInstance($numchars, $height, $height, $difficulty);
-  return $obj->generate();
-}
