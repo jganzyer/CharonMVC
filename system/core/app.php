@@ -11,7 +11,6 @@ class Charon
   private $route_current;
   private $route_nf;
   public $route_name;
-
   public function __construct()
   {
     $this->base = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1));
@@ -84,11 +83,11 @@ class Charon
     {
       $brackete = explode(':', $bracket,2);
       if (isset($brackete[1])) {
-        if ($brackete[1] === "i") {
-          $brackete[1] = "(\d+)";
+        if ($brackete[1] === 'i') {
+          $brackete[1] = '(\d+)';
         }
       } else {
-        $brackete[1] = "(\w+)";
+        $brackete[1] = '(\w+)';
       }
       if (isset($params[$brackete[0]])) {
         if (preg_match('#^'.$brackete[1].'$#', $params[$brackete[0]])) {

@@ -7,7 +7,7 @@ define('SYSTEM_DIR', ROOT.'system'.DS);
 define('CORE_DIR', SYSTEM_DIR.'core'.DS);
 define('HELPERS_DIR', SYSTEM_DIR.'helpers'.DS);
 
-define('CACHE_DIR', APP_DIR.'cache'.DS);
+define('CACHE_DIR', ROOT.'cache'.DS);
 define('COMMAND_DIR', APP_DIR.'command'.DS);
 define('MODEL_DIR', APP_DIR.'model'.DS);
 define('VIEW_DIR', APP_DIR.'view'.DS);

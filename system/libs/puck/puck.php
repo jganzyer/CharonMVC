@@ -5,14 +5,17 @@ class Puck
   private static $load;
   public static function init($mode)
   {
-    if ($mode !== 1 && file_exists(__DIR__.'\cache.json'))
+    if (defined('CACHE_DIR') === true && $mode !== 1 && file_exists(CACHE_DIR.'\puck.json'))
     {
-      self::$cf = json_decode(file_get_contents(__DIR__.'\cache.json') , true);
+      self::$cf = json_decode(file_get_contents(CACHE_DIR.'\puck.json') , true);
     }
     else
     {
       self::dump();
-      file_put_contents(__DIR__.'\cache.json', json_encode(self::$cf, JSON_PRETTY_PRINT));
+      if (defined('CACHE_DIR'))
+      {
+        file_put_contents(CACHE_DIR.'\puck.json', json_encode(self::$cf, JSON_PRETTY_PRINT));
+      }
     }
     spl_autoload_register('Puck::__autoload');
   }
@@ -30,7 +33,8 @@ class Puck
   public static function __autoload($cn)
   {
     $p = false;
-    if (isset(self::$cf[$cn])) {
+    if (isset(self::$cf[$cn]))
+    {
       require_once(self::$cf[$cn]);
       $p = true;
     }

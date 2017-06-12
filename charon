@@ -1,4 +1,13 @@
 #!/usr/bin/php
 <?php
-require_once('.\system\libs\puck\puck.php');
-require_once('.\system\core\cli.php');
+use Charon\CLI;
+require_once('system/libs/puck/puck.php');
+Puck::init(1);
+CLI::init(function(){
+  CLI::command('', function(){
+    CLI::line();
+    CLI::out('Charon Console Application', CLI_CENTER);
+    CLI::out('--------------------------', CLI_CENTER);
+    CLI::line();
+  });
+}, $argv);

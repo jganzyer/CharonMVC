@@ -22,21 +22,26 @@ class Dump
   private static function type2function($var)
   {
     $type = gettype($var);
-    if ($type === "array")
+    $var = ($type === 'array') ? $var : xss_clean($var);
+    if ($type === 'array')
     {
       self::array2html($var);
     }
-    else if ($type === "string")
+    else if ($type === 'string')
     {
       self::string2html($var);
     }
-    else if ($type === "object")
+    else if ($type === 'object')
     {
       self::object2html($var);
     }
-    else if ($type === "boolean")
+    else if ($type === 'boolean')
     {
       self::boolean2html($var);
+    }
+    else if ($type === 'NULL')
+    {
+      self::null2html($var);
     }
     else
     {
@@ -66,6 +71,10 @@ class Dump
     }
     self::$tab -= 1;
     self::$h .= self::tab().'}<br/>';
+  }
+  private static function null2html($var)
+  {
+    self::$h .= '<span class="cdump-value">NULL</span><br/>';
   }
   private static function string2html($var)
   {

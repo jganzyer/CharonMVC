@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://charonMVC.com" target="_blank_"><img src="https://i.hizliresim.com/zBvV5j.png" width="310px" /></a>
+<a href="https://charonMVC.com" target="_blank"><img src="https://i.hizliresim.com/zBvV5j.png" width="310px" /></a>
 <br/>
 <img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" />
 <img src="https://img.shields.io/badge/issues-0-brightgreen.svg?style=flat-square" />
@@ -32,8 +32,8 @@
 * add validator
 * add error handler
 * add cache class
-* add NO-CSRF
 * add languagement
+* add puck console
 
 ## Routing
 
@@ -145,7 +145,9 @@ string | Benchmark::first($fn, array $params = [])
 
 ## Charon Wallpapers
 
-<p><a href="https://i.hizliresim.com/VMpDrr.jpg" target="_blank_"><img src="https://i.hizliresim.com/VMpDrr.jpg" width="320px" />
+<p><a href="https://i.hizliresim.com/dGn8pX.jpg" target="_blank"><img src="https://i.hizliresim.com/dGn8pX.jpg" width="320px" />
+</a></p>
+<p><a href="https://i.hizliresim.com/5Q8LJL.jpg" target="_blank"><img src="https://i.hizliresim.com/5Q8LJL.jpg" width="320px" />
 </a></p>
 
 ## License
