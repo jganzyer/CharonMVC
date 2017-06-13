@@ -6,8 +6,9 @@ Puck::init(1);
 CLI::init(function(){
   CLI::command('', function(){
     CLI::line();
-    CLI::out('Charon Console Application', CLI_CENTER);
-    CLI::out('--------------------------', CLI_CENTER);
+    CLI::out('Charon Console 1.0.0', CLI_CENTER);
+    CLI::out('--------------------', CLI_CENTER);
+    CLI::eol();
     CLI::line();
   });
 }, $argv);

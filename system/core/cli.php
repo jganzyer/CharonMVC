@@ -24,6 +24,10 @@ class CLI
   {
     self::$width = $int;
   }
+  public static function eol()
+  {
+    echo PHP_EOL;
+  }
   public static function out($string, $align = CLI_LEFT, $eol = true)
   {
     $string = trim($string);

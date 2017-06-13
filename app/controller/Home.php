@@ -1,10 +1,9 @@
 <?php
-use Charon\NoCSRF as no;
+use Charon\Validator;
 
 class Home extends Controller
 {
   public function index($app)
   {
-    d(true);
   }
 }
