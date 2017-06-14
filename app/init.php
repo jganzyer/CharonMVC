@@ -1,2 +1,12 @@
 <?php
-Route::any('/', 'Home.index');
+Charon\oops::init();
+// function yeah()
+// {
+//   test();
+// }
+// function test()
+// {
+//   asd;
+//   sd();
+// }
+// yeah();

@@ -8,7 +8,6 @@
 <img src="https://img.shields.io/badge/version-v1.0.0-orange.svg?style=flat-square" />
 </p>
 
-Sinan ;)
 [CharonMVC][1] is a super simple and powerfull **PHP framework** for web applications.
 
 ## Documentation

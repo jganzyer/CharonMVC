@@ -79,11 +79,7 @@ class Request
   {
     if ($full == true)
     {
-      if (self::isSecure()) {
-        return "https"."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-      } else {
-        return "http"."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-      }
+      return ((self::isSecure() === true) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     }
     return self::$server['REQUEST_URI'];
   }
@@ -110,7 +106,8 @@ class Request
 
   public static function file($data = null)
   {
-    if ($data === null) {
+    if ($data === null)
+    {
       return self::$files;
     }
     return (isset(self::$files[$data])) ? self::$files[$data] : false;
@@ -118,7 +115,8 @@ class Request
 
   public static function post($data = null)
   {
-    if ($data === null) {
+    if ($data === null)
+    {
       return self::$post;
     }
     return (isset(self::$post[$data])) ? self::$post[$data] : false;
@@ -126,7 +124,8 @@ class Request
 
   public static function server($data = null)
   {
-    if ($data === null) {
+    if ($data === null)
+    {
       return self::$server;
     }
     return (isset(self::$server[$data])) ? self::$server[$data] : false;
@@ -134,7 +133,8 @@ class Request
 
   public static function header($data = null)
   {
-    if ($data === null) {
+    if ($data === null)
+    {
       return self::$headers;
     }
     return (isset(self::$headers[$data])) ? self::$headers[$data] : false;
