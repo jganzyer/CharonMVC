@@ -1,49 +1,108 @@
 <?php
-namespace Charon;
 class oops
 {
   private static $errors = [];
-  private static $handler = [];
+  private static $handlers = [];
   private static $active = false;
+  private static $ignores = [];
 
-  public static function push($type, $message, $file = null, $line = null)
+  public static function push($message, $type = 1, $root = false)
   {
-    $db = debug_backtrace(2);
-    array_pop($db);
-    d(end($db));
-    d($message);
-    array_push(self::$errors,[
-      'type' => $type,
-      'message' => $message,
-      'file' => $file,
-      'line' => $line
-    ]);
-    if ($type === 1)
+    if (self::is_ignored($type) === false)
+    {
+      $db = debug_backtrace(2);
+      if ($root == true)
+      {
+        $db = $db[0];
+      } else {
+        $db = $db[0];
+      }
+      $file = $db['file'];
+      $line = $db['line'];
+
+      array_push(self::$errors,[
+        'type' => $type,
+        'message' => $message,
+        'file' => $file,
+        'line' => $line
+      ]);
+    }
+  }
+
+  public static function _push($type, $message = null, $file = null, $line = null)
+  {
+    if (self::is_ignored($type) === false)
+    {
+      array_push(self::$errors,[
+        'type' => $type,
+        'message' => $message,
+        'file' => $file,
+        'line' => $line
+      ]);
+    }
+    if ($type === 1 && self::is_ignored(1) === false)
     {
       self::response();
     }
   }
 
-  public static function handle()
+  public static function _handle()
   {
     $error = error_get_last();
-    if ($error['type'] === 1)
+    $type = $error['type'];
+    if ($type === 1 && self::is_ignored($type) === false)
     {
       array_push(self::$errors,$error);
       self::response();
     }
-    return true;
+  }
+
+  public static function ignore($types)
+  {
+    if ($types === E_ALL)
+    {
+      self::$active = true;
+    }
+    $type = gettype($types);
+    if ($type === 'array')
+    {
+      self::$ignores = $types;
+    } else {
+      self::$ignores = [$types];
+    }
+  }
+
+  private static function is_ignored($type)
+  {
+    return in_array($type, self::$ignores);
+  }
+
+  public static function report()
+  {
+    return self::$errors;
+  }
+
+  public static function add_handler($handler)
+  {
+    self::$handlers[] = $handler;
   }
 
   public static function response()
   {
-    d(self::$errors);
+    if (self::$active === false && empty(self::$errors) === false && empty(self::$handlers) === false)
+    {
+      foreach (self::$handlers as $handler)
+      {
+        new $handler(self::$errors);
+      }
+      self::$active = true;
+    }
   }
 
-  public static function init($exceptions = null)
+  public static function init()
   {
     error_reporting(0);
-    register_shutdown_function('\Charon\oops::handle');
-    set_error_handler('\Charon\oops::push');
+    register_shutdown_function('\oops::_handle');
+    set_error_handler('\oops::_push');
   }
 }

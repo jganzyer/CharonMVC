@@ -7,9 +7,9 @@ class Route
   {
     self::$app = $instance;
   }
-  public static function call($var, $params = [], $delimeter = '.')
+  public static function call($var, $params = [], $vthis = null, $delimeter = '.')
   {
-    return self::$app->call($var, $params, $delimeter);
+    return self::$app->call($var, $params, $vthis, $delimeter);
   }
   public static function get($pattern, $callback)
   {
@@ -36,17 +36,18 @@ class Route
     self::$app->map($methods, self::$base.$pattern, $callback);
     return new static;
   }
+  public static function uri($name, $params = [])
+  {
+    self::$app->uri($name, $params);
+  }
   public static function name($name)
   {
     self::$app->name($name);
+    return new static;
   }
-  public static function redirect($name, $params = [], $timeout =0, $statusCode = 302)
+  public static function redirect($name, $params = [], $timeout = 0, $statusCode = 302)
   {
     self::$app->redirect($name, $params, $timeout, $statusCode);
-  }
-  public static function uri()
-  {
-    return self::$app->uri;
   }
   public static function set404($callback)
   {

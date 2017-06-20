@@ -146,8 +146,6 @@ string | Benchmark::first($fn, array $params = [])
 
 <p><a href="https://i.hizliresim.com/dGn8pX.jpg" target="_blank"><img src="https://i.hizliresim.com/dGn8pX.jpg" width="320px" />
 </a></p>
-<p><a href="https://i.hizliresim.com/5Q8LJL.jpg" target="_blank"><img src="https://i.hizliresim.com/5Q8LJL.jpg" width="320px" />
-</a></p>
 
 ## License
 

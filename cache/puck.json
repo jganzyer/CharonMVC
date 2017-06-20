@@ -18,7 +18,8 @@
     "Charon\\Captcha": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\captcha\\captcha.php",
     "SVGCaptcha": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\captcha\\svgcaptcha.php",
     "Point": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\captcha\\svgcaptcha.php",
-    "Charon\\oops": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\oops\\oops.php",
+    "oops": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\oops\\oops.php",
+    "oops\\niceone": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\oops\\handler\\niceone\\niceone.php",
     "Puck": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\puck\\puck.php",
     "Charon\\Validator": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\validator\\validator.php"
 }

@@ -1,5 +1,5 @@
 <?php
-  class Config implements \ArrayAccess
+class Config implements \ArrayAccess
 {
   private static $config = [];
   public static function load($file)
@@ -13,8 +13,10 @@
           require_once($loc);
           if (isset($config)) {
             self::$config = array_merge(self::$config, $config);
-          } else {
-            die('config not set');
+          }
+          else
+          {
+            \oops::push('$config variable doesn\'t exists in **'.$loc.'**');
           }
           break;
         case 'xml':
@@ -32,6 +34,7 @@
       return false;
     }
   }
+
   public static function &get($key = null)
   {
     return self::$config[$key];

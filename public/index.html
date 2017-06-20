@@ -5,18 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>OOPS!</title>
+  <script src="js/prettify.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900|Roboto:400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/oops.css">
 </head>
 <body>
-  <div class="navbar antisec">
+  <div class="navbar">
+    <div class="overlay-one"></div>
     <div class="mw1600">
-      <h1 class="logo-out">OOPS!<span class="logo-in">OOPS!</span></h1>
-    </div>
-  </div>
-  <div class="tabbar">
-    <div class="mw1600">
+      <h1 class="logo-out antisec">OOPS!<span class="logo-in">OOPS!</span></h1>
+
+      <h2 class="title">Looks like we got some <br/>trouble ...</h2>
+      <button class="button button-back antisec">BACK</button>
+      <button class="button button-report antisec">REPORT</button>
+
+      <div class="tabbar antisec">
+        <div class="tab active" data-tab="error">ERRORS</div>
+        <div class="tab" data-tab="envirionment">ENVIRIONMENT</div>
+      </div>
+
     </div>
   </div>
 
+  <div class="content">
+    <div class="content-mw mw1600">
+      <div class="content-tab" data-content-tab="error">
+        <div class="content-left antisec">
+          <h3 class="content-title antisec" data-count="04">STACK FRAME</h3>
+
+          <div class="error type-warning">
+            <div class="error-icon antisec">
+              <img class="error-icon-img" src="https://image.flaticon.com/icons/svg/78/78371.svg">
+            </div>
+            <span class="error-type">WARNING</span>
+            <pre class="imspy error-code">
+              code
+            </pre>
+            <span class="imspy error-detail"></span>
+            <span class="imspy error-file"></span>
+          </div>
+          <div class="error type-notice">
+            <div class="error-icon antisec">
+              <img class="error-icon-img" src="https://image.flaticon.com/icons/svg/3/3716.svg">
+            </div>
+            <span class="error-type">NOTICE</span>
+          </div>
+          <div class="error type-error">
+            <div class="error-icon antisec">
+              <img class="error-icon-img" src="https://image.flaticon.com/icons/svg/149/149413.svg">
+            </div>
+            <span class="error-type">ERROR</span>
+          </div>
+          <div class="error type-custom">
+            <div class="error-icon antisec">
+              <img class="error-icon-img" src="https://image.flaticon.com/icons/svg/15/15934.svg">
+            </div>
+            <span class="error-type">CUSTOM ERROR</span>
+          </div>
+        </div>
+        <div class="content-right">
+          <h3 class="content-title antisec" data-count="&#x26;#">PREVIEW</h3>
+          <pre class="right-code prettyprint lang-php linenums:6">//6
+
+
+Charon\oops::init();
+<span class="code-error type-error">xx;</span>
+
+
+//9
+///10</pre>
+        <div class="right-table">Use of undefined constant xx - assumed 'xx'</div>
+        <div class="right-table"><span class="highlight">File:</span>..\app\routes.php</div>
+        </div>
+      </div>
+      <div class="content-tab-envirionment"></div>
+    </div>
+  </div>
+  <script src="js\oops.js" charset="utf-8"></script>
 </body>
 </html>

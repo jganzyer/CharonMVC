@@ -21,7 +21,7 @@ class Validator
         return (bool)preg_match('/^[\pL\pM\pN]+$/u', $data);
       },
       'alnumDash' => function($data){
-        return (bool) preg_match('/^[\pL\pM\pN_-]+$/u', $data);
+        return (bool)preg_match('/^[\pL\pM\pN_-]+$/u', $data);
       },
       'email' => function($data){
         return filter_var($data, FILTER_VALIDATE_EMAIL);
@@ -67,6 +67,40 @@ class Validator
         {
           return true;
         }
+      },
+      'equal' => function($data,$var){
+        return ($data === $var);
+      },
+      'positive' => function($data){
+        return ($data > 0);
+      },
+      'negative' => function($data){
+        return ($data < 0);
+      },
+      'slug' => function($data)
+      {
+        if (mb_strstr($data, '--')) {
+          return false;
+        }
+        if (!preg_match('@^[0-9a-z\-]+$@', $data)) {
+          return false;
+        }
+        if (preg_match('@^-|-$@', $data)) {
+          return false;
+        }
+        return true;
+      },
+      'url' => function($data)
+      {
+        return filter_var($data,FILTER_VALIDATE_URL);
+      },
+      'regex' => function($data)
+      {
+        return filter_var($data, FILTER_VALIDATE_REGEXP);
+      },
+      'mac' => function($data)
+      {
+        return filter_var($data, FILTER_VALIDATE_MAC);
       }
     ];
     $this->rule_messages = [
@@ -90,9 +124,14 @@ class Validator
             $params = [];
           }
           array_unshift($params, $enter);
-          if (call_user_func_array($this->rules[$name], $params) == false)
+          if (isset($this->rules[$name]))
           {
-            $this->errors[] = [$field, $enter, isset($this->rule_messages[$name]) ? str_replace(['{field}','{rule}','{value}'],[$field,$name, $enter],$this->rule_messages[$name]) : ''];
+            if (call_user_func_array($this->rules[$name], $params) == false)
+            {
+              $this->errors[] = [$field, $enter, isset($this->rule_messages[$name]) ? str_replace(['{field}','{rule}','{value}'],[$field,$name, $enter],$this->rule_messages[$name]) : ''];
+            }
+          } else {
+            \oops::push('rule '.$name.' doesn\'t exists.');
           }
         }
       }

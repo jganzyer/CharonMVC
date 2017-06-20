@@ -34,7 +34,7 @@ class Response
     ob_clean();
     if (!file_exists($path))
     {
-      die('dosya yok');
+      \oops::push('file doesn\t exists in **{file}** on line **{line}**');
     }
     if ($filename === null)
     {

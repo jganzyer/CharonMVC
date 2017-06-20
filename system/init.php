@@ -6,6 +6,7 @@ define('APP_DIR', ROOT.'app'.DS);
 define('SYSTEM_DIR', ROOT.'system'.DS);
 define('CORE_DIR', SYSTEM_DIR.'core'.DS);
 define('HELPERS_DIR', SYSTEM_DIR.'helpers'.DS);
+define('PUBLIC_DIR', ROOT.'public'.DS);
 
 define('CACHE_DIR', ROOT.'cache'.DS);
 define('COMMAND_DIR', APP_DIR.'command'.DS);

@@ -7,6 +7,9 @@ function d($var = null)
   }
   return Charon\Dump::dump($var);
 }
+function replace_between_all($start, $end, $new, $source) {
+  return preg_replace('#('.preg_quote($start).')(.*?)('.preg_quote($end).')#si', str_replace('{data}','$2', $new), $source);
+}
 function generate_token()
 {
   return md5(uniqid(mt_rand(), true));
@@ -24,7 +27,7 @@ function is_windows()
 {
   return strtolower(substr(PHP_OS, 0, 3)) === 'win';
 }
-function bool_to_string($bool, $true, $false)
+function bool2string($bool, $true, $false)
 {
   return ($bool == true) ? $true : $false;
 }
@@ -97,13 +100,13 @@ function floor_to($number, $to)
 {
   return floor($number / $to) * $to;
 }
-function slug($text)
+function slug($str)
 {
-  $text = preg_replace('~[^\pL\d]+~u', '-', $text);
-  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-  $text = preg_replace('~[^-\w]+~', '', $text);
-  $text = trim($text, '-');
-  $text = preg_replace('~-+~', '-', $text);
-  $text = strtolower($text);
-  return $text;
+  $str = preg_replace('~[^\pL\d]+~u', '-', $str);
+  $str = iconv('utf-8', 'ASCII//TRANSLIT//IGNORE', $str);
+  $str = preg_replace('~[^-\w]+~', '', $str);
+  $str = trim($str, '-');
+  $str = preg_replace('~-+~', '-', $str);
+  $str = strtolower($str);
+  return $str;
 }

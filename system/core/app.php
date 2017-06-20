@@ -19,21 +19,37 @@ class Charon
     $this->uri = $uri;
   }
 
-  public static function call($var, $params = [], $this = null, $delimeter = '.')
+  public static function call($var, $params = [], $vthis = null, $delimeter = '.')
   {
     $type = gettype($var);
     if ($type === 'object')
     {
-      return call_user_func_array(Closure::bind($var, $this), $params);
+      return call_user_func_array(Closure::bind($var, $vthis), $params);
     }
     else if ($type === 'string')
     {
       $e = explode($delimeter, $var);
-      return call_user_func_array([new $e[0](),$e[1]], $params);
+      if (isset($e[1]) === true)
+      {
+        $callable = [new $e[0](),$e[1]];
+        if (method_exists('Closure', 'fromCallable'))
+        {
+          $callable = Closure::fromCallable($callable);
+          $callable = Closure::bind($callable, $vthis);
+        }
+        return call_user_func_array($callable, $params);
+      }
+      $callable = $e[0];
+      if (method_exists('Closure', 'fromCallable'))
+      {
+        $callable = Closure::fromCallable($callable);
+        $callable = Closure::bind($callable, $vthis);
+      }
+      return call_user_func_array($callable, $params);
     }
   }
 
-  public function get($pattern,$callback)
+  public function get($pattern, $callback)
   {
     return $this->map('get',$pattern,$callback);
   }
@@ -73,36 +89,52 @@ class Charon
   public function name($name)
   {
     $this->route_name[strtolower($name)] = $this->route_current;
+    return $this;
   }
 
-  public function redirect($name, $params = [], $timeout = 0, $statusCode = 302)
+  public function uri($name, $params = [])
   {
     $pattern = $this->route_name[strtolower($name)];
     preg_match_all("/\[([^\]]*)\]/", $pattern, $pattern_brackets);
     foreach($pattern_brackets[1] as $bracket)
     {
       $brackete = explode(':', $bracket,2);
-      if (isset($brackete[1])) {
-        if ($brackete[1] === 'i') {
+      if (isset($brackete[1]))
+      {
+        if ($brackete[1] === 'i')
+        {
           $brackete[1] = '(\d+)';
         }
-      } else {
+      }
+      else
+      {
         $brackete[1] = '(\w+)';
       }
-      if (isset($params[$brackete[0]])) {
-        if (preg_match('#^'.$brackete[1].'$#', $params[$brackete[0]])) {
+      if (isset($params[$brackete[0]]))
+      {
+        if (preg_match('#^'.$brackete[1].'$#', $params[$brackete[0]]))
+        {
           $pattern = str_replace('['.$bracket.']', $params[$brackete[0]], $pattern);
-        } else {
+        }
+        else
+        {
           return false;
         }
-      } else {
+      }
+      else
+      {
         return false;
       }
     }
     $is = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443;
-    $link = 'http'.(($is === true) ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
+    $link = (($is === true) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
     $link .= $pattern;
-    Response::redirect($link, $timeout, $statusCode);
+    return $link;
+  }
+
+  public function redirect($name, $params = [], $timeout = 0, $statusCode = 302)
+  {
+    Response::redirect($this->uri($name, $params), $timeout, $statusCode);
   }
 
   public function middleware($callback)
@@ -143,20 +175,21 @@ class Charon
         $pattern = str_replace('['.$pbs.']', $pb[1], $pattern);
         if (in_array($pb[0], $params_key))
         {
-          die('param replacition');
+          \oops::push('param replication in **{file}** on line **{line}**');
         }
         array_push($params_key, $pb[0]);
       }
       if (preg_match_all('#^'.$pattern.'$#', $this->base.$this->uri, $params_value))
       {
         array_shift($params_value);
+        $params_value = array_map(function($v){return $v[0];}, $params_value);
         $params = array_combine($params_key, $params_value);
         Request::__init($params);
         if (!empty($route['mws']))
         {
           foreach ($route['mws'] as $mw)
           {
-            if ($this->call($mw,[$this]) !== true)
+            if ($this->call($mw,[$this], new Controller()) !== true)
             {
               return false;
             }
@@ -178,7 +211,7 @@ class Charon
     {
       if (!empty($this->route_nf['404']))
       {
-        $this->call($this->route_nf['404']);
+        $this->call($this->route_nf['404'], [], new Controller());
       }
     }
     return true;
