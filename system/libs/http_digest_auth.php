@@ -1,8 +1,8 @@
 <?php
 namespace Charon;
-define('AUTH_CANCEL', 0);
-define('AUTH_OK', 1);
-define('AUTH_WRONG', 2);
+if (defined('AUTH_CANCEL') === false) {define('AUTH_CANCEL', 0);}
+if (defined('AUTH_OK') === false){define('AUTH_OK', 1);}
+if (defined('AUTH_WRONG') === false){define('AUTH_WRONG', 2);}
 class HTTP_DIGEST_AUTH
 {
   private $users = [];

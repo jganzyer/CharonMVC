@@ -3,12 +3,41 @@
 use Charon\CLI;
 require_once('system/libs/puck/puck.php');
 Puck::init(1);
-CLI::init(function(){
-  CLI::command('', function(){
-    CLI::line();
-    CLI::out('Charon Console 1.0.0', CLI_CENTER);
-    CLI::out('--------------------', CLI_CENTER);
-    CLI::eol();
-    CLI::line();
-  });
-}, $argv);
+global $argv;
+CLI::eol(50);
+CLI::line();
+CLI::command('', function(){
+  CLI::out('|------------------------|', CLI_CENTER, 'light_green');
+  CLI::out('|  Charon Console 1.0.0  |', CLI_CENTER, 'light_green');
+  CLI::out('|------------------------|', CLI_CENTER, 'light_green');
+  CLI::eol();
+  CLI::out('An advanced console application made for Charon. You can', CLI_CENTER);
+  CLI::out('see more commands with', CLI_CENTER);
+  CLI::out('- help -', CLI_CENTER, 'light_green');
+});
+CLI::command('help', function(){
+  CLI::out('|---------------------------|', CLI_CENTER, 'light_green');
+  CLI::out('|  Charon Console Commands  |', CLI_CENTER, 'light_green');
+  CLI::out('|---------------------------|', CLI_CENTER, 'light_green');
+  CLI::eol();
+  CLI::eol();
+  CLI::out(">> ".CLI::colorify("github", 'light_green')."             | for see github link of the Charon");
+  CLI::eol();
+  CLI::out(">> ".CLI::colorify("puck install", 'light_green')."       | for install package from github");
+  CLI::out(">> ".CLI::colorify("puck uninstall", 'light_green')."     | for remove package installed from github");
+  CLI::out(">> ".CLI::colorify("puck dump", 'light_green')."          | for cache whole project (always active on developer mode)");
+  CLI::eol();
+  CLI::out(">> ".CLI::colorify("md5 [data]", 'light_green')."         | for hash given data");
+});
+CLI::command('github', function(){
+  CLI::out('https://github.com/charonfw/charonmvc', CLI_CENTER, 'light_green');
+});
+CLI::command('md5 [data]', function($data){
+  CLI::out(md5($data), CLI_CENTER, 'light_green');
+});
+CLI::undefined(function($method){
+  CLI::out("Undefined command '".$method."'", CLI_CENTER, 'light_green');
+});
+require_once(realpath('.').'\app\command\init.php');
+CLI::run();
+CLI::line(false);

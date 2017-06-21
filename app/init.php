@@ -1,4 +1,2 @@
 <?php
-Route::get('/', function(){
-
-});
+Route::get('/', 'Home.index');

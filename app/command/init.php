@@ -1,0 +1,2 @@
+<?php
+use Charon\CLI;

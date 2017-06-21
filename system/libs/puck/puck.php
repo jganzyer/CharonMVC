@@ -14,7 +14,7 @@ class Puck
       self::dump();
       if (defined('CACHE_DIR'))
       {
-        file_put_contents(CACHE_DIR.'\puck.json', json_encode(self::$cf, JSON_PRETTY_PRINT));
+        file_put_contents(CACHE_DIR.'\puck.json', json_encode(self::$cf));
       }
     }
     spl_autoload_register('Puck::__autoload');
@@ -114,7 +114,7 @@ class Puck
     	}
     	$i++;
     }
-    if (!$namespace_ok) {
+    if ($namespace_ok === false) {
       return '';
     } else {
       return $namespace;
