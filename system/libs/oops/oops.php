@@ -15,6 +15,7 @@ class oops
       {
         $db = $db[0];
       } else {
+        array_shift($db);
         $db = $db[0];
       }
       $file = $db['file'];
@@ -50,7 +51,7 @@ class oops
   {
     $error = error_get_last();
     $type = $error['type'];
-    if ($type === 1 && self::is_ignored($type) === false)
+    if (($type === 1 || $type === 16 || $type === 64 || $type === 256 || $type === 4096) && self::is_ignored($type) === false)
     {
       array_push(self::$errors,$error);
       self::response();
@@ -101,7 +102,7 @@ class oops
 
   public static function init()
   {
-    error_reporting(0);
+    error_reporting(E_PARSE);
     register_shutdown_function('\oops::_handle');
     set_error_handler('\oops::_push');
   }

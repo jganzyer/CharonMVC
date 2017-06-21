@@ -20,8 +20,8 @@ class niceone
       $types = slug($type);
       $line = $error['line'];
 
+      $error['message'] .= ' in <b>'.$sfile.'</b> on line <b>'.$line.'</b>';
       $error['message'] = replace_between_all('**', '**', '<b>{data}</b>', $error['message']);
-      $error['message'] = str_replace(['{file}', '{line}'], [$sfile, $line], $error['message']);
 
       $buffer = xss_clean(file_get_contents($error['file']));
       $buffer = explode(PHP_EOL, $buffer);
@@ -96,7 +96,7 @@ class niceone
 
   private static function type2string($type)
   {
-    if ($type === 1 || $type === 16 || $type === 64 || $type === 256) {
+    if ($type === 1 || $type === 16 || $type === 64 || $type === 256 || $type === 4096) {
       return "error";
     } else if ($type === 2 || $type === 32 || $type === 128 || $type === 512) {
       return "warning";

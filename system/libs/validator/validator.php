@@ -69,6 +69,9 @@ class Validator
         }
       },
       'equal' => function($data,$var){
+        return ($data == $var);
+      },
+      'same' => function($data,$var){
         return ($data === $var);
       },
       'positive' => function($data){

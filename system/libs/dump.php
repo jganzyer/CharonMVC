@@ -58,7 +58,7 @@ class Dump
   private static function array2html($var)
   {
     self::$tab += 1;
-    self::$h .= '<span class="cdump-type">array(<span class="cdump-value">'.count($var).'</span>)</span> {<br/>';
+    self::$h .= '<span class="cdump-type">array(<span class="cdump-value">'.count($var).'</span>)</span> [<br/>';
     foreach ((array)$var as $vkey => $vvalue)
     {
       if (gettype($vkey) === "string")
@@ -69,11 +69,11 @@ class Dump
       self::type2function($vvalue, $vkey);
     }
     self::$tab -= 1;
-    self::$h .= self::tab().'}<br/>';
+    self::$h .= self::tab().']<br/>';
   }
   private static function null2html($var)
   {
-    self::$h .= '<span class="cdump-value">NULL</span><br/>';
+    self::$h .= '<span class="cdump-value">null</span><br/>';
   }
   private static function string2html($var)
   {

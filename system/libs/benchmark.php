@@ -16,7 +16,7 @@ class Benchmark
     }
     else
     {
-      \oops::push('step doesn\'t exists in **{file}** on line **{line}**');
+      \oops::push('step doesn\'t exists');
     }
   }
   public static function time()

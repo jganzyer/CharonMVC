@@ -10,6 +10,10 @@ function d($var = null)
 function replace_between_all($start, $end, $new, $source) {
   return preg_replace('#('.preg_quote($start).')(.*?)('.preg_quote($end).')#si', str_replace('{data}','$2', $new), $source);
 }
+function function_params(callable $callback)
+{
+  return array_map(function($v){$io = false;if ($v->isOptional() === true){$io = true;return ['name' => $v->name, 'optional' => $io, 'default' => $v->getDefaultValue()];}return ['name' => $v->name, 'optional' => $io];},(array)(new ReflectionFunction($callback))->getParameters());
+}
 function generate_token()
 {
   return md5(uniqid(mt_rand(), true));
@@ -78,13 +82,14 @@ function copy_recursive($source, $destination, $permissions = 0755)
     mkdir($destination, $permissions);
   }
   $dir = dir($source);
-  while (false !== $entry = $dir->read()) {
-    if ($entry == '.' || $entry == '..') {
+  while (false !== $entry = $dir->read())
+  {
+    if ($entry == '.' || $entry == '..')
+    {
       continue;
     }
     copy_recursive($source.DS.$entry, $destination.DS.$entry, $permissions);
   }
-
   $dir->close();
   return true;
 }

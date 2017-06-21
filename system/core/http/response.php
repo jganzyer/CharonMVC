@@ -34,7 +34,7 @@ class Response
     ob_clean();
     if (!file_exists($path))
     {
-      \oops::push('file doesn\t exists in **{file}** on line **{line}**');
+      \oops::push('file doesn\t exists');
     }
     if ($filename === null)
     {

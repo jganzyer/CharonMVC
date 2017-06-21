@@ -10,6 +10,7 @@
     "Response": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\core\\http\\response.php",
     "Charon\\Benchmark": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\benchmark.php",
     "Charon\\Dump": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\dump.php",
+    "Charon\\HTTP_DIGEST_AUTH": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\http_digest_auth.php",
     "Charon\\IP": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\ip.php",
     "Charon\\License": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\license.php",
     "Charon\\NoCSRF": "D:\\program_files\\xampp\\htdocs\\CharonMVC\\system\\libs\\nocsrf.php",

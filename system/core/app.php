@@ -175,7 +175,7 @@ class Charon
         $pattern = str_replace('['.$pbs.']', $pb[1], $pattern);
         if (in_array($pb[0], $params_key))
         {
-          \oops::push('param replication in **{file}** on line **{line}**');
+          \oops::push('param replication');
         }
         array_push($params_key, $pb[0]);
       }

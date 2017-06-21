@@ -16,7 +16,7 @@ class Config implements \ArrayAccess
           }
           else
           {
-            \oops::push('$config variable doesn\'t exists in **'.$loc.'**');
+            \oops::push('$config variable doesn\'t exists');
           }
           break;
         case 'xml':

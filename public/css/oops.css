@@ -37,7 +37,7 @@ html, body {
   padding:0 60px;
 }
 .navbar {
-  position: relative;
+  position: absolute;
   top:0;
   left:0;
   width: 100%;
@@ -300,6 +300,7 @@ html, body {
   font-family: consolas, monospace!important;
   width: 100%!important;
   overflow: visible!important;
+  word-break:break-all!important;
 }
 .right-table
 {
@@ -317,6 +318,7 @@ html, body {
   padding:10px 22px 12px 22px;
   margin-top:10px;
   width: 100%!important;
+  word-break:break-all;
 }
 .right-table:before
 {
