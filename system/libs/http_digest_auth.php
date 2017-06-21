@@ -54,8 +54,8 @@ class HTTP_DIGEST_AUTH
   }
   private function http_digest_parse($txt)
   {
-    $needed_parts = array('nonce'=>1, 'nc'=>1, 'cnonce'=>1, 'qop'=>1, 'username'=>1, 'uri'=>1, 'response'=>1);
-    $data = array();
+    $needed_parts = ['nonce'=>1, 'nc'=>1, 'cnonce'=>1, 'qop'=>1, 'username'=>1, 'uri'=>1, 'response'=>1];
+    $data = [];
     $keys = implode('|', array_keys($needed_parts));
     preg_match_all('@('.$keys.')=(?:([\'"])([^\2]+?)\2|([^\s,]+))@', $txt, $matches, PREG_SET_ORDER);
     foreach ($matches as $m)

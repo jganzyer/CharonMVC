@@ -158,6 +158,7 @@ class Charon
   public function run()
   {
     $nf = true;
+    $c = new Controller();
     foreach((array)$this->route_main as $pattern => $route)
     {
       $params_key = [];
@@ -166,11 +167,9 @@ class Charon
       {
         $pb = explode(':',$pbs,2);
         $pb[1] = isset($pb[1]) ? $pb[1] : '(\w+)';
-        switch($pb[1])
+        if ($pb[1] === 'i')
         {
-          case 'i':
-            $pb[1] = '(\d+)';
-            break;
+          $pb[1] = '(\d+)';
         }
         $pattern = str_replace('['.$pbs.']', $pb[1], $pattern);
         if (in_array($pb[0], $params_key))
@@ -189,7 +188,7 @@ class Charon
         {
           foreach ($route['mws'] as $mw)
           {
-            if ($this->call($mw,[$this], new Controller()) !== true)
+            if ($this->call($mw,[$this], $c) !== true)
             {
               return false;
             }
@@ -198,12 +197,12 @@ class Charon
         if (isset($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])]))
         {
           $nf = false;
-          $this->call($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])], [$this], new Controller());
+          $this->call($route['cb'][strtolower($_SERVER['REQUEST_METHOD'])], [$this], $c);
         }
         else if (isset($route['cb']['any']))
         {
           $nf = false;
-          $this->call($route['cb']['any'], [$this], new Controller());
+          $this->call($route['cb']['any'], [$this], $c);
         }
       }
     }
@@ -211,7 +210,7 @@ class Charon
     {
       if (!empty($this->route_nf['404']))
       {
-        $this->call($this->route_nf['404'], [], new Controller());
+        $this->call($this->route_nf['404'], [], $c);
       }
     }
     return true;
