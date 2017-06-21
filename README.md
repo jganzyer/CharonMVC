@@ -29,10 +29,8 @@
 
 ## TODO'S
 
-* add error handler
 * add cache class
 * add languagement
-* add puck console
 
 ## Routing
 

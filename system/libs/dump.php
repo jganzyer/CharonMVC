@@ -5,9 +5,14 @@ class Dump
   private static $h = '';
   private static $f = true;
   private static $tab = 0;
+  public static $active = true;
 
   public static function dump($var)
   {
+    if (self::$active == false)
+    {
+      return;
+    }
     if (self::$f === true)
     {
       echo '<style>.cdump{overflow:auto!important;color:#e6e9ed!important;background-color:#2F3640!important;padding:16px 20px 0!important;font-size:12px!important;line-height:17px!important;border-radius:2px!important}.cdump-type{color:#4fc1e9!important}.cdump-key{color:#ffce54!important}.cdump-value{color:#a0d468!important}.cdump-space{display:inline-block;width:18px;color:#363e49;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}</style>';
@@ -28,7 +33,7 @@ class Dump
     }
     else if ($type === 'string')
     {
-      self::string2html(xss_clean($var));
+      self::string2html($var);
     }
     else if ($type === 'object')
     {
@@ -77,7 +82,7 @@ class Dump
   }
   private static function string2html($var)
   {
-    self::$h .= '<span class="cdump-type">string(<span class="cdump-value">'.strlen($var).'</span>)</span> <span class="cdump-value">"'.$var.'"</span><br/>';
+    self::$h .= '<span class="cdump-type">string(<span class="cdump-value">'.strlen($var).'</span>)</span> <span class="cdump-value">"'.str_replace(["\n","\r"],['<span class="cdump-key">\n</span>','<span class="cdump-key">\r</span>'],xss_clean($var)).'"</span><br/>';
   }
   private static function object2html($var)
   {

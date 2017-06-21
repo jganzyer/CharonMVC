@@ -28,6 +28,10 @@ class oops
         'line' => $line
       ]);
     }
+    if ($type === 1 && self::is_ignored(1) === false)
+    {
+      self::response();
+    }
   }
 
   public static function _push($type, $message = null, $file = null, $line = null)

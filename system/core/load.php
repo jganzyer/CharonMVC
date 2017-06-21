@@ -11,9 +11,21 @@ class Load
       return false;
     }
   }
-  public static function view($name)
+  public static function view($name, $params = [])
   {
-
+    $f = VIEW_DIR.$name.'.layout.html';
+    if (file_exists($f) === false)
+    {
+      \oops::push('File **'.str_replace(ROOT,'..\\',$f).'** doesn\'t exists');
+    }
+    $c = file_get_contents($f);
+    foreach ((array)$params as $key => $value)
+    {
+      $c = str_replace('{!!'.$key.'!!}', $value, $c);
+      $c = str_replace('{{'.$key.'}}', xss_clean($value), $c);
+      $c = str_replace('{{--'.$key.'--}}', '<!--'.xss_clean($value).'-->', $c);
+    }
+    return $c;
   }
   public static function model($name)
   {
@@ -34,6 +46,7 @@ class Load
     }
     else
     {
+      Controller::$_libs[strtolower(($name === null) ? end($e) : $name)] = new stdClass();
       return false;
     }
   }

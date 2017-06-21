@@ -18,13 +18,19 @@ define('CONFIG_DIR', APP_DIR.'config'.DS);
 require_once('system\libs\puck\puck.php');
 require_once('system\core\config.php');
 Config::load('main.json');
-Puck::init(Config::get("puck")['mode']);
+$_mode = Config::get("puck")['mode'];
+Puck::init($_mode);
 
 $app = new Charon();
 Route::init($app);
 require_once(HELPERS_DIR.'system.php');
 oops::init();
 oops::add_handler(oops\niceone::class);
+if ($_mode === 0) # PRODUCTION
+{
+  oops::ignore(E_ALL);
+  Charon\Dump::$active = false;
+}
 require_once(APP_DIR.'init.php');
 $app->run();
 oops::response();

@@ -14,6 +14,14 @@ class HTTP_DIGEST_AUTH
     $this->users = $users;
     $this->realm = $realm;
   }
+  public function logout()
+  {
+    if (headers_sent() === true)
+    {
+      \oops::push('You can\'t logout when headers sent');
+    }
+    header('HTTP/1.1 401 Unauthorized');
+  }
   public function authenticate()
   {
     if (empty($_SERVER['PHP_AUTH_DIGEST']))
