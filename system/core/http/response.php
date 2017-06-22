@@ -29,12 +29,12 @@ class Response
     exit;
   }
 
-  public static function file($path, $filename = null, $mimetype = null, $download = false)
+  public static function file($path, $download = false, $filename = null, $mimetype = null)
   {
     ob_clean();
     if (!file_exists($path))
     {
-      \oops::push('file doesn\t exists');
+      \oops::push('file **'.str_replace(ROOT,'..\\',$filename).'** doesn\t exists');
     }
     if ($filename === null)
     {
@@ -51,6 +51,7 @@ class Response
     if ($download === true)
     {
       self::header('Content-Disposition', 'attachment; filename="'.$filename.'"');
+      self::header('Content-Transfer-Encoding', 'Binary');
       self::header('Pragma', 'public');
       self::header('Cache-Control', 'must-revalidate, post-check=0, pre-check=0');
     }
